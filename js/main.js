@@ -1,6 +1,13 @@
 (function ($) {
     "use strict";
 
+    // Resolve API base from meta tag with localhost fallback
+    const apiBase = (function() {
+        const tag = document.querySelector('meta[name="api-base"]');
+        const val = tag && tag.getAttribute('content');
+        return (val && val.trim()) ? val.trim() : 'http://localhost:3001';
+    })();
+
     // Spinner
     var spinner = function () {
         setTimeout(function () {
@@ -106,8 +113,8 @@
                 }
 
                 try {
-                    // Production API
-                    const res = await fetch('https://vismann.onrender.com/api/contact', {
+                    // Environment-aware API
+                    const res = await fetch(`${apiBase}/api/contact`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
