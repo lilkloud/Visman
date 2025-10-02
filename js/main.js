@@ -106,8 +106,8 @@
                 }
 
                 try {
-                    // NOTE: Backend runs locally by default on port 3001
-                    const res = await fetch('http://localhost:3001/api/contact', {
+                    // Production API
+                    const res = await fetch('https://vismann.onrender.com/api/contact', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
