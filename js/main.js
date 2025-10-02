@@ -24,7 +24,7 @@
             $('.nav-bar').removeClass('sticky-top shadow-sm');
         }
     });
-
+    
     // Facts counter
     $('[data-toggle="counter-up"]').counterUp({
         delay: 5,
@@ -128,3 +128,4 @@
             });
         }
     });
+})(jQuery);
